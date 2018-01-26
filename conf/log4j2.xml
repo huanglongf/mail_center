@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="DEBUG">
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT" follow="true" >
+            <PatternLayout>
+                <pattern>%d %p %C %m%n</pattern>
+            </PatternLayout>
+        </Console>
+        <!-- 按日期每天生成log文件 -->
+        <RollingFile name="rootFile" fileName="/home/yang/temp/root.log"
+            filePattern="/home/yang/temp/root-%d{yyyy-MM-dd}.log">
+            <PatternLayout pattern="%d %p %C %m%n" />
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1" />
+            </Policies>
+        </RollingFile>
+    </Appenders>
+    <Loggers>
+        <!-- 输出info级别信息 -->
+        <Root level="info">
+            <AppenderRef ref="Console" />
+            <AppenderRef ref="rootFile" />
+        </Root>
+    </Loggers>
+</Configuration>  
